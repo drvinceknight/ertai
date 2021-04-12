@@ -1,0 +1,12 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "ertai"
+author = "Vincent Knight"
+author-email = "vince@vknight.org"
+home-page = "https://vknight.org"
+requires-python= ">=3.8"
+description-file = "README.md"
+classifiers = [ "License :: OSI Approved :: MIT License",]
