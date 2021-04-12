@@ -15,10 +15,10 @@ class Card:
     cost: int = 0
     tapped: bool = False
 
-    def tap(self):
+    def tap(self) -> None:
         """A method to tap a card"""
         self.tapped = True
 
-    def untap(self):
+    def untap(self) -> None:
         """A method to untap a card"""
         self.tapped = False
