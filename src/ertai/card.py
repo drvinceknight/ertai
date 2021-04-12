@@ -22,3 +22,23 @@ class Card:
     def untap(self) -> None:
         """A method to untap a card"""
         self.tapped = False
+
+
+@dataclass
+class BasicLand(Card):
+    """
+    A class for a basic land.
+
+    Can be tapped to add mana to a man pool.
+    """
+
+    color: Union[str, None] = None
+
+    def generate_mana(self) -> Union[str, None]:
+        """
+        Tap a given land card to create man of the given color.
+        """
+        if self.tapped is False:
+            self.tap()
+            return self.color
+        return None
