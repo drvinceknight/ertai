@@ -37,6 +37,9 @@ def test_base_card_class_taps():
 
 
 def test_land_initialisation():
+    """
+    For all colors test that lands have given color and enter untapped.
+    """
     for color in ertai.colors:
         card = ertai.BasicLand(color=color)  # TODO Add color class
         assert card.color == color
@@ -44,6 +47,9 @@ def test_land_initialisation():
 
 
 def test_land_can_add_mana_of_given_color_if_untapped():
+    """
+    For all colors test that lands can give required color.
+    """
     for color in ertai.colors:
         card = ertai.BasicLand(color=color)  # TODO Add color class
         assert card.generate_mana() == color
@@ -51,6 +57,9 @@ def test_land_can_add_mana_of_given_color_if_untapped():
 
 
 def test_land_cannot_add_mana_of_given_color_if_tapped():
+    """
+    For all colors test that lands cannot give mana if tapped.
+    """
     for color in ertai.colors:
         card = ertai.BasicLand(color=color)  # TODO Add color class
         card.tap()
