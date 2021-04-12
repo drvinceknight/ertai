@@ -10,7 +10,7 @@ jobs:
       max-parallel: 4
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
-        python-version: [3.8, 3.9]
+        python-version: [3.8]
 
     steps:
     - uses: actions/checkout@v1
@@ -29,4 +29,4 @@ jobs:
 
     - name: run tox
       run: |
-        python -m tox
+        python -m tox -e py38  # TODO When able to use py39 on github actions modify.
