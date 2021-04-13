@@ -47,3 +47,44 @@ def test_representation_of_no_mana():
     """
     mana = ertai.Mana()
     assert mana.__repr__() == "0 Mana"
+
+
+def test_addition_of_mana():
+    """
+    This tests that mana can be added to other mana.
+    """
+    pool = ertai.Mana("Black", "Blue", "Red", "Red")
+    mana_from_land = ertai.Mana("Black")
+    pool += mana_from_land
+    assert pool.counter == collections.Counter({"Black": 2, "Blue": 1, "Red": 2})
+
+
+def test_subtraction_of_mana():
+    """
+    This tests that mana can be taken from a pool
+    """
+    pool = ertai.Mana("Black", "Blue", "Red", "Red")
+    mana_for_spell = ertai.Mana("Black", "Red")
+    pool -= mana_for_spell
+    assert pool.counter == collections.Counter({"Blue": 1, "Red": 1})
+
+
+def test_comparisons_of_mana_quantity_when_true():
+    """
+    This tests if Mana from one quantity less than another.
+    """
+    pool = ertai.Mana("Black", "Blue", "Red", "Red")
+    mana_for_spell = ertai.Mana("Black", "Red")
+    assert mana_for_spell <= pool
+    assert pool >= mana_for_spell
+
+
+def test_comparisons_of_mana_quantity_when_false():
+    """
+    This tests if Mana from one quantity less than another is False when there
+    is not sufficient Mana.
+    """
+    pool = ertai.Mana("Black", "Blue", "Red", "Red")
+    mana_for_spell = ertai.Mana("Black", "Red", "White")
+    assert (mana_for_spell <= pool) is False
+    assert (pool >= mana_for_spell) is False
