@@ -25,6 +25,21 @@ class Card:
         """A method to untap a card"""
         self.tapped = False
 
+    def cast(self, pool: Mana) -> Mana:
+        """
+        A method to cast a card.
+
+        Parameters:
+
+            - pool: a mana pool
+
+        It returns the pool after casting it. If there is insufficient mana in
+        the pool the pool will be unmodified.
+        """
+        if self.cost <= pool:
+            pool -= self.cost
+        return pool
+
 
 @dataclass
 class BasicLand(Card):
