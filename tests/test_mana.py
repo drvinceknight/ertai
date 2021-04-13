@@ -27,7 +27,7 @@ def test_initialisation_of_mana_with_collection_of_colors():
 
 def test_initialisation_of_mana_with_no_mana():
     """
-    This is to test that a single color can be passed to the Mana class.
+    This is to test that no color can be passed to the Mana class.
     """
     mana = ertai.Mana()
     assert mana.counter == collections.Counter({})
@@ -71,7 +71,7 @@ def test_subtraction_of_mana():
 
 def test_comparisons_of_mana_quantity_when_true():
     """
-    This tests if Mana from one quantity less than another.
+    This tests if Mana from one quantity is less than another.
     """
     pool = ertai.Mana("Black", "Blue", "Red", "Red")
     mana_for_spell = ertai.Mana("Black", "Red")
