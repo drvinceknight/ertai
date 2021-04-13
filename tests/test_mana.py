@@ -49,6 +49,34 @@ def test_representation_of_no_mana():
     assert mana.__repr__() == "0 Mana"
 
 
+def test_equality_of_mana_when_they_are_equal():
+    """
+    Test the quality method on Mana. Here the Mana is created with the strings in
+    a different order but they are the same.
+    """
+    mana = ertai.Mana("Black", "Blue", "Red", "Red")
+    other_mana = ertai.Mana("Black", "Red", "Red", "Blue")
+    assert mana == other_mana
+
+
+def test_equality_of_mana_when_they_are_not_equal():
+    """
+    Test the quality method on Mana. Here the Mana is created with different
+    strings.
+    """
+    mana = ertai.Mana("Black", "Blue", "Red", "Red")
+    other_mana = ertai.Mana("Black", "Blue", "Red")
+    assert mana != other_mana
+
+
+def test_equality_of_mana_when_not_comparing_the_same_objects():
+    """
+    Test the quality method on Mana. Here the Mana is compared to a string.
+    """
+    mana = ertai.Mana("Black", "Blue", "Red", "Red")
+    assert mana != "A string"
+
+
 def test_addition_of_mana():
     """
     This tests that mana can be added to other mana.

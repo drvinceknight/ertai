@@ -6,13 +6,15 @@ from dataclasses import dataclass
 
 from typing import Union
 
+from .mana import Mana
+
 
 @dataclass
 class Card:
     """A class for a base card."""
 
     title: Union[str, None] = None
-    cost: int = 0
+    cost: Mana = Mana()
     tapped: bool = False
 
     def tap(self) -> None:
@@ -34,11 +36,11 @@ class BasicLand(Card):
 
     color: Union[str, None] = None
 
-    def generate_mana(self) -> Union[str, None]:
+    def generate_mana(self) -> Union[Mana, None]:
         """
         Tap a given land card to create mana of the given color.
         """
         if self.tapped is False:
             self.tap()
-            return self.color
+            return Mana(self.color)
         return None
