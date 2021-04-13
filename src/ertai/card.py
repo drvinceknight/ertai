@@ -29,14 +29,14 @@ class BasicLand(Card):
     """
     A class for a basic land.
 
-    Can be tapped to add mana to a man pool.
+    Can be tapped to add mana to a mana pool.
     """
 
     color: Union[str, None] = None
 
     def generate_mana(self) -> Union[str, None]:
         """
-        Tap a given land card to create man of the given color.
+        Tap a given land card to create mana of the given color.
         """
         if self.tapped is False:
             self.tap()
