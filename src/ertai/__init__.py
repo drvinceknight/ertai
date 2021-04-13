@@ -1,5 +1,6 @@
 """A tool for mathematical analysis of Magic the Gathering"""
 from .card import BasicLand, Card
+from .mana import Mana
 
 from typing import Tuple
 
