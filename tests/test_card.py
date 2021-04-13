@@ -10,7 +10,7 @@ def test_base_card_class_has_expected_attributes_and_defaults():
     """
     card = ertai.Card()
     assert card.title is None
-    assert card.cost == 0
+    assert card.cost == ertai.Mana()
     assert card.tapped is False
 
 
@@ -20,7 +20,7 @@ def test_base_card_class_takes_expected_attribute_on_init():
     """
     card = ertai.Card(title="Island")
     assert card.title == "Island"
-    assert card.cost == 0
+    assert card.cost == ertai.Mana()
     assert card.tapped is False
 
 
@@ -36,32 +36,21 @@ def test_base_card_class_taps():
     assert card.tapped is False
 
 
-def test_land_initialisation():
+def test_base_card_class_can_be_cast_when_given_sufficient_mana():
     """
-    For all colors test that lands have given color and enter untapped.
+    Test that a card can be cast given a mana pool.
+
+    If there is sufficient Mana in the pool it will update the mana pool.
     """
-    for color in ertai.colors:
-        card = ertai.BasicLand(color=color)  # TODO Add color class
-        assert card.color == color
-        assert card.tapped is False
+    pool = ertai.Mana("Blue", "Blue", "Red")
+    counter_spell = ertai.Card(title="Counter Spell", cost=ertai.Mana("Blue", "Blue"))
+    assert counter_spell.cast(pool=pool) == ertai.Mana("Red")
 
 
-def test_land_can_add_mana_of_given_color_if_untapped():
+def test_base_card_class_can_be_cast_when_not_given_sufficient_mana():
     """
-    For all colors test that lands can give required color.
+    Test that a card cannot be cast given a mana pool.
     """
-    for color in ertai.colors:
-        card = ertai.BasicLand(color=color)  # TODO Add color class
-        assert card.generate_mana() == color
-        assert card.tapped is True
-
-
-def test_land_cannot_add_mana_of_given_color_if_tapped():
-    """
-    For all colors test that lands cannot give mana if tapped.
-    """
-    for color in ertai.colors:
-        card = ertai.BasicLand(color=color)  # TODO Add color class
-        card.tap()
-        assert card.generate_mana() is None
-        assert card.tapped is True
+    pool = ertai.Mana("Blue", "Red", "Red")
+    counter_spell = ertai.Card(title="Counter Spell", cost=ertai.Mana("Blue", "Blue"))
+    assert counter_spell.cast(pool=pool) == pool
