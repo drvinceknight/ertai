@@ -293,3 +293,92 @@ warning is given.
 1 Red Mana, 1 Black Mana
 
 ```
+
+
+### How to contribute
+
+Clone the repository and create a virtual environment:
+
+```bash
+$ git clone https://github.com/drvinceknight/ertai.git
+$ cd ertai
+$ python -m venv env
+
+```
+
+Activate the virtual environment and install [`tox`](https://tox.readthedocs.io/en/latest/):
+
+```bash
+$ source env/bin/activate
+$ python -m pip install tox
+
+```
+
+Make modifications.
+
+To run the tests:
+
+```bash
+$ python -m tox
+
+```
+
+Pull requests are welcome.
+
+
+## Discussion
+
+### What is Magic The Gathering
+
+Magic the Gathering is a collectable card game that was first released in 1993.
+
+- Here is the official basic rules:
+  [https://magic.wizards.com/en/magic-gameplay](https://magic.wizards.com/en/magic-gameplay)
+- Here is the wikipedia page entry: [https://en.wikipedia.org/wiki/Magic:_The_Gathering](https://en.wikipedia.org/wiki/Magic:_The_Gathering)
+
+### Why is it called Ertai
+
+Alongside the game there is a lot of lore that exists. Ertai was a particular
+character. From [https://villains.fandom.com/wiki/Ertai]:
+
+> . He is a brilliant but arrogant mage who learned from the head wizard of the
+> Tolarian Academy Barrin and signed up to join the Weatherlight Crew.
+
+### What can this library be used for
+
+At present this library offers data class that can be used to model aspects of
+Magic the Gathering.
+
+The `erta.Mana` class allows us to carry out Mana arithmetic:
+
+```
+>>> mana_pool = ertai.Mana("Blue", "Blue", "Red", "None", "Blue")
+>>> ertai_the_adept_cost = ertai.Mana("Blue", "Blue", "None")
+>>> mana_pool - ertai_the_adept_cost
+1 Blue Mana, 1 Red Mana
+
+```
+
+The `ertai.Card` class can be used to create new cards with given abilities.
+
+### Development stack
+
+There are a number of continuous integration checks that are used:
+
+- [black](https://github.com/psf/black) and
+  [flake8](https://flake8.pycqa.org/en/latest/) for code style.
+- [interrogate](https://interrogate.readthedocs.io/en/latest/) to ensure all
+  code has docstrings.
+- [mypy](https://mypy.readthedocs.io/en/stable/) for static type checking.
+- [coverage](https://coverage.readthedocs.io/en/coverage-5.5/) to ensure 100%
+  coverage of source code by test.
+- [mccabe](https://github.com/PyCQA/mccabe) to measure code complexity.
+
+[tox]() is used to test the code in isolated environments.
+
+## Reference
+
+### Other Python magic the gathering libraries
+
+[Magic: The Gathering SDK](https://github.com/MagicTheGathering/mtg-sdk-python):
+A wrapper around the MTG API of magicthegathering.io
