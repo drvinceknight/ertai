@@ -170,3 +170,126 @@ cards have cost 2.
 
 We see that as expected the probability of playing in the first turn goes up as
 the number of cards with cost 1 increases.
+
+## How to
+
+### How to create mana
+
+`ertai` has a mana class that can be used to create any amount of mana.
+
+```python
+>>> spell_cost = ertai.Mana("Blue", "Blue")
+>>> spell_cost
+2 Blue Mana
+
+```
+
+### How to add more mana
+
+```python
+>>> spell_cost += ertai.Mana("Red")
+>>> spell_cost
+2 Blue Mana, 1 Red Mana
+
+```
+
+### How to check if one collection of mana can be paid using another
+
+```python
+>>> mana_pool = ertai.Mana("Blue", "Red", "Red", "Blue")
+>>> spell_cost <= mana_pool
+True
+
+```
+
+### How to take one collection of mana away from another
+
+```python
+>>> mana_pool -= spell_cost
+>>> mana_pool
+1 Red Mana
+
+```
+
+We see that we no longer have enough mana for the spell:
+
+```python
+>>> spell_cost <= mana_pool
+False
+
+```
+
+### How to create a basic land
+
+```python
+>>> island = ertai.BasicLand(title="Island", color="Blue")
+>>> island
+BasicLand(title='Island', cost=0 Mana, tapped=False, color='Blue')
+
+```
+
+### How to generate mana from a land
+
+```python
+>>> island.tapped
+False
+>>> island.generate_mana()
+1 Blue Mana
+>>> island.tapped
+True
+
+```
+
+When tapped the land will not generate mana.
+
+```python
+>>> island.generate_mana()
+
+```
+
+### How to untap or tap a card
+
+All cards in `ertai` have a `untap` method.
+
+```python
+>>> island.untap()
+>>> island.tapped
+False
+
+```
+
+They also have a `tap` method.
+
+```python
+>>> island.tap()
+>>> island.tapped
+True
+
+```
+
+### How to cast a card
+
+At present, casting a card does nothing but modify a given mana pool **if the
+cost can be paid**.
+
+```python
+>>> mana_pool = ertai.Mana("Red", "Red", "Black")
+>>> card_cost = ertai.Mana("Red")
+>>> card = ertai.Card(title="Lightning bolt", cost=card_cost)
+>>> mana_pool = card.cast(mana_pool)
+>>> mana_pool
+1 Red Mana, 1 Black Mana
+
+```
+
+Note that if a card cannot be case then the mana pool will stay unchanged but no
+warning is given.
+
+```python
+>>> card_cost = ertai.Mana("Blue", "Blue")
+>>> card = ertai.Card(title="Counterspell", cost=card_cost)
+>>> mana_pool = card.cast(mana_pool)
+>>> mana_pool
+1 Red Mana, 1 Black Mana
+
+```
