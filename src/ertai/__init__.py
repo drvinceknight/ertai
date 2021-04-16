@@ -4,7 +4,7 @@ from .mana import Mana
 
 from typing import Tuple
 
-__version__ = "0.0.1"  # type: str
+__version__ = "0.0.2"  # type: str
 
 colors = (
     "Blue",
