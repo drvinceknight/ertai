@@ -25,4 +25,4 @@ jobs:
                   FLIT_USERNAME: ${{ secrets.PYPI_USERNAME }}
                   FLIT_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
               run: |
-                  make publish
+                  python -m flit publish
