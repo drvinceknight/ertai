@@ -341,7 +341,7 @@ Magic the Gathering is a collectable card game that was first released in 1993.
 Alongside the game there is a lot of lore that exists. Ertai was a particular
 character. From [https://villains.fandom.com/wiki/Ertai]:
 
-> . He is a brilliant but arrogant mage who learned from the head wizard of the
+> He is a brilliant but arrogant mage who learned from the head wizard of the
 > Tolarian Academy Barrin and signed up to join the Weatherlight Crew.
 
 ### What can this library be used for
@@ -374,7 +374,7 @@ There are a number of continuous integration checks that are used:
   coverage of source code by test.
 - [mccabe](https://github.com/PyCQA/mccabe) to measure code complexity.
 
-[tox]() is used to test the code in isolated environments.
+[tox](https://tox.readthedocs.io/en/latest/) is used to test the code in isolated environments.
 
 ## Reference
 
