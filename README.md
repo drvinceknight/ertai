@@ -184,7 +184,7 @@ the number of cards with cost 1 increases.
 
 ```
 
-### How to add more mana
+### How to add more mana
 
 ```python
 >>> spell_cost += ertai.Mana("Red")
@@ -247,7 +247,7 @@ When tapped the land will not generate mana.
 
 ```
 
-### How to untap or tap a card
+### How to untap or tap a card
 
 All cards in `ertai` have a `untap` method.
 
@@ -295,7 +295,7 @@ warning is given.
 ```
 
 
-### How to contribute
+### How to contribute
 
 Clone the repository and create a virtual environment:
 
@@ -336,7 +336,7 @@ Magic the Gathering is a collectable card game that was first released in 1993.
   [https://magic.wizards.com/en/magic-gameplay](https://magic.wizards.com/en/magic-gameplay)
 - Here is the wikipedia page entry: [https://en.wikipedia.org/wiki/Magic:_The_Gathering](https://en.wikipedia.org/wiki/Magic:_The_Gathering)
 
-### Why is it called Ertai
+### Why is it called Ertai
 
 Alongside the game there is a lot of lore that exists. Ertai was a particular
 character. From [https://villains.fandom.com/wiki/Ertai]:
