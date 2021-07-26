@@ -51,11 +51,11 @@ class Creature(Card):
         """
         return (
             self.title
-            + "\t Cost:"
+            + "    Cost:"
             + str(self.cost)
-            + "\t Power:"
+            + "    Power:"
             + str(self.power)
-            + "\t Toughness:"
+            + "    Toughness:"
             + str(self.toughness)
         )
 

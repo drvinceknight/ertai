@@ -304,7 +304,7 @@ This can only create a creature with **power/toughness** and **no keyword** as s
 ...            power=1,
 ...            toughness=1)
 >>> creature
-Selfless Savior	 Cost:1 White Mana	 Power:1	 Toughness:1
+Selfless Savior    Cost:1 White Mana    Power:1    Toughness:1
 
 ```
 
@@ -317,10 +317,10 @@ We can then use this creature to attack.if **no another creature** block this at
 ...          tapped=False,
 ...          power=2,
 ...          toughness=1)
->>> damage_1=creature.attack(target)
->>> damage_2=creature.attack()
+>>> damage_1=creature.attack(None)
+>>> damage_2=creature.attack(target)
 >>> damage_1,damage_2
-(0, 1)
+(1, 0)
 
 ```
 

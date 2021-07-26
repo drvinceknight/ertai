@@ -59,14 +59,14 @@ def test_creature_attack():
         cost=ertai.Mana("White"),
         tapped=False,
         power=2,
-        toughness=1,
+        toughness=2,
     )
 
     target_creature = ertai.Creature(
         title="Wall of Runes",
         cost=ertai.Mana("Blue"),
         tapped=False,
-        power=0,
+        power=1,
         toughness=4,
     )
 
@@ -77,3 +77,11 @@ def test_creature_attack():
     assert damage_to_player_2 == 0
     assert my_creature_1.state is False
     assert my_creature_2.state is True
+
+    target_creature.tap()
+    tapped_test = target_creature.attack(my_creature_1)
+    assert tapped_test == 0
+
+    target_creature.untap()
+    direct_damage = target_creature.attack(None)
+    assert direct_damage == 1
