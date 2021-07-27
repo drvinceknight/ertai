@@ -296,11 +296,10 @@ warning is given.
 
 ### How to create a ceature card
 
-This can only create a creature with **power/toughness** and **no keyword** as so far. It can perform attack action.
+Pass a `power` and `toughness` to the `Creature` class:
 
 ```python
 >>> creature = ertai.Creature(title="Selfless Savior",cost=ertai.Mana("White"),
-...            tapped=False,
 ...            power=1,
 ...            toughness=1)
 >>> creature
@@ -308,19 +307,23 @@ Selfless Savior    Cost:1 White Mana    Power:1    Toughness:1
 
 ```
 
-### How to use a creature to attack 
+### How to use a creature to fight 
 
-We can then use this creature to attack.if **no another creature** block this attack(i.e. become target creature of this attck action), the **attack** function then return the power of attacking creature. This number represents the damage the opponent player would have.
+We can then use this creature to fight.if **no another creature** set as target in this fight, the `fight` function prints a message says `Need a target`. Otherwise, this fight was sucessfully acted by this creature.
 
 ```python
 >>> target = ertai.Creature(title="Usher of the Fallen",cost=ertai.Mana("White"),
-...          tapped=False,
 ...          power=2,
 ...          toughness=1)
->>> damage_1=creature.attack(None)
->>> damage_2=creature.attack(target)
->>> damage_1,damage_2
-(1, 0)
+>>> creature.fight(None)
+Need a target
+
+```
+
+```python
+>>> creature.fight(target)
+>>> creature.is_alive
+False
 
 ```
 

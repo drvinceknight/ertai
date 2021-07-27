@@ -40,6 +40,7 @@ def test_creature_takes_expected_attribute_on_init():
     assert creature.power == 1
     assert creature.toughness == 1
     assert creature.base_toughness == 1
+    assert creature.is_alive is True
 
 
 def test_creature_attack():
@@ -49,7 +50,6 @@ def test_creature_attack():
     my_creature_1 = ertai.Creature(
         title="Selfless Savior",
         cost=ertai.Mana("White"),
-        tapped=False,
         power=1,
         toughness=1,
     )
@@ -57,7 +57,6 @@ def test_creature_attack():
     my_creature_2 = ertai.Creature(
         title="Usher of the Fallen",
         cost=ertai.Mana("White"),
-        tapped=False,
         power=2,
         toughness=2,
     )
@@ -70,18 +69,8 @@ def test_creature_attack():
         toughness=4,
     )
 
-    damage_to_player_1 = my_creature_1.attack(my_creature_2)
-    damage_to_player_2 = my_creature_2.attack(target_creature)
+    my_creature_1.fight(my_creature_2)
+    my_creature_2.fight(target_creature)
 
-    assert damage_to_player_1 == 0
-    assert damage_to_player_2 == 0
-    assert my_creature_1.state is False
-    assert my_creature_2.state is True
-
-    target_creature.tap()
-    tapped_test = target_creature.attack(my_creature_1)
-    assert tapped_test == 0
-
-    target_creature.untap()
-    direct_damage = target_creature.attack(None)
-    assert direct_damage == 1
+    assert my_creature_1.is_alive is False
+    assert my_creature_2.is_alive is True

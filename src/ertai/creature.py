@@ -3,47 +3,47 @@ Class for Creature
 """
 
 from .card import Card
-from .mana import Mana
+from dataclasses import dataclass
 
 
+@dataclass(repr=False)
 class Creature(Card):
     """
     A class for basic creatures.
+
+    Initiate this creature by giving power, toughness of it.
+
+    Other basic information below of this Creature derived from Card:
+
+    title : title of this creature
+
+    cost : cost to cast this creature
+
+    tapped : tap information of this creature
+
+    Next is the paramertes belong to Creature class:
+
+    Parameters:
+        - power : power  of this creature
+        - toughness : Toughness value of this creature,
+                but this value can be modified in a fight or other condition
+        - base_toughness : Toughness value of this creature,
+                use to store the base toughness of this creature.
+        - is_alive : A bool value represent wether this creature is alive.
     """
 
-    def __init__(
-        self,
-        title=None,
-        cost=Mana(),
-        tapped=False,
-        power=0,
-        toughness=0,
-    ):
+    power: int = 0
+    toughness: int = 0
+    is_alive: bool = True
+
+    def __post_init__(self):
         """
-        Initiate this creature by giving power, toughness of it.
-
-        Other basic information below of this Creature derived from Card:
-
-        title : title of this creature
-
-        cost : cost to cast this creature
-
-        tapped : tap information of this creature
-
-        Parameters:
-            - power : power  of this creature
-            - toughness : Toughness value of this creature,
-                but this value can be modified in a fight or other condition
-            - base_toughness : Toughness value of this creature,
-                use to store the base toughness of this creature
+        Set base_toughness to record the base toughness
+        this creature has. It can be used after a fight
+        to recover this creature's toughness to default value
+        if this creature is alive after fighting.
         """
-
-        Card.__init__(self, title, cost, tapped)
-
-        self.power = power
-        self.toughness = toughness
-        self.base_toughness = toughness
-        self.state = True
+        self.base_toughness = self.toughness
 
     def __repr__(self):
         """
@@ -66,31 +66,24 @@ class Creature(Card):
         then we set it's state to False which means that this creature is died.
         """
         if self.toughness <= 0:
-            self.state = False
+            self.is_alive = False
         else:
             self.toughness = self.base_toughness
 
-    def attack(self, target) -> int:
+    def fight(self, target):
         """
         A simulation of this creature fight with other one.
         This function also be called on the target creature when fight happen.
-        It returns a int value represent the damage opponent player taken.
-        Also,if no Creature block this attack from this creature,
-        then the opponent would take the damage
-        as this creature's power value
+        If no another creature is set as target in this fight,
+        then it prints a message says Need a target.
 
         Parameters:
             - target : Another creature this one fight with
         """
 
-        if self.tapped is True:
-            return 0
+        if target is None:
+            print("Need a target")
 
-        if not target:
-            return self.power
         else:
             self.toughness = self.toughness - target.power
             self.check_state()
-        self.tap()
-
-        return 0
