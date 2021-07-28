@@ -43,7 +43,7 @@ def test_creature_takes_expected_attribute_on_init():
     assert creature.is_alive is True
 
 
-def test_creature_attack():
+def test_creature_fight():
     """
     Tests the situation when a fight happend bewteen two creatures.
     """
