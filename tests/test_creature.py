@@ -51,7 +51,7 @@ def test_creature_fight():
         title="Wall of Runes",
         cost=ertai.Mana("Blue"),
         tapped=False,
-        power=1,
+        power=0,
         toughness=4,
     )
 
@@ -60,3 +60,6 @@ def test_creature_fight():
 
     assert my_creature_1.is_alive is False
     assert my_creature_2.is_alive is True
+    assert my_creature_1.toughness == -1
+    assert my_creature_2.toughness == 2
+    assert target_creature.toughness == 3
