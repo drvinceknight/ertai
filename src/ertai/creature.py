@@ -22,8 +22,8 @@ class Creature(Card):
         - is_alive : A bool value represent wether this creature is alive.
     """
 
-    power: int = 0
-    toughness: int = 0
+    power: int
+    toughness: int
     is_alive: bool = True
 
     def __post_init__(self):
