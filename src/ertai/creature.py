@@ -51,7 +51,7 @@ class Creature(Card):
 
 def is_alive():
       """
-      ... # TODO Add something here
+      This function is used to see wether this creature is alive or not.
       """
       return self.toughness > 0
 
