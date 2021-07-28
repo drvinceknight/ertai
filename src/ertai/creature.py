@@ -71,9 +71,6 @@ class Creature(Card):
             - target : Another creature this one fight with
         """
 
-        if target is None:
-            print("Need a target")
 
-        else:
-            self.toughness = self.toughness - target.power
-            self.check_state()
+        self.toughness = self.toughness - target.power
+        target.toughness == target.toughness - self.power
