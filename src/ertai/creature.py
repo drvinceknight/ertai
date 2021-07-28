@@ -9,19 +9,9 @@ from dataclasses import dataclass
 @dataclass(repr=False)
 class Creature(Card):
     """
-    A class for basic creatures.
+    A base class for creatures.
 
-    Initiate this creature by giving power, toughness of it.
-
-    Other basic information below of this Creature derived from Card:
-
-    title : title of this creature
-
-    cost : cost to cast this creature
-
-    tapped : tap information of this creature
-
-    Next is the paramertes belong to Creature class:
+    Initiate this creature by passing power and toughness.
 
     Parameters:
         - power : power  of this creature
