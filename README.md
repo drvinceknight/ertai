@@ -309,20 +309,19 @@ Selfless Savior    Cost:1 White Mana    Power:1    Toughness:1
 
 ### How to use a creature to fight 
 
-We can then use this creature to fight.if **no another creature** set as target in this fight, the `fight` function prints a message says `Need a target`. Otherwise, this fight was sucessfully acted by this creature.
+We can then use this creature to fight a `target` create:
 
 ```python
 >>> target = ertai.Creature(title="Usher of the Fallen",cost=ertai.Mana("White"),
 ...          power=2,
 ...          toughness=1)
->>> creature.fight(None)
-Need a target
-
+>>> creature.fight(target)
 ```
 
+In this case the create is no longer alive after the fight:
+
 ```python
->>> creature.fight(target)
->>> creature.is_alive
+>>> creature.is_alive()
 False
 
 ```
