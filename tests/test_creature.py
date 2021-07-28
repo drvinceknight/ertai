@@ -6,20 +6,6 @@ Tests for Creatures.
 import ertai
 
 
-def test_creature_has_expected_attributes_and_defaults():
-    """
-    This is a test to check the no-arguments
-    initialised creature has all the attributes we expected.
-    """
-    creature = ertai.Creature()
-
-    assert creature.title is None
-    assert creature.cost == ertai.Mana()
-    assert creature.tapped is False
-    assert creature.power == 0
-    assert creature.toughness == 0
-    assert creature.base_toughness == 0
-
 
 def test_creature_takes_expected_attribute_on_init():
     """
