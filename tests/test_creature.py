@@ -6,7 +6,6 @@ Tests for Creatures.
 import ertai
 
 
-
 def test_creature_takes_expected_attribute_on_init():
     """
     This is a test to check wether the
@@ -26,7 +25,7 @@ def test_creature_takes_expected_attribute_on_init():
     assert creature.power == 1
     assert creature.toughness == 1
     assert creature.base_toughness == 1
-    assert creature.is_alive is True
+    assert creature.is_alive() is True
 
 
 def test_creature_fight():
@@ -58,8 +57,8 @@ def test_creature_fight():
     my_creature_1.fight(my_creature_2)
     my_creature_2.fight(target_creature)
 
-    assert my_creature_1.is_alive is False
-    assert my_creature_2.is_alive is True
+    assert my_creature_1.is_alive() is False
+    assert my_creature_2.is_alive() is True
     assert my_creature_1.toughness == -1
-    assert my_creature_2.toughness == 2
-    assert target_creature.toughness == 3
+    assert my_creature_2.toughness == 1
+    assert target_creature.toughness == 2

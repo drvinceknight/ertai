@@ -316,6 +316,7 @@ We can then use this creature to fight a `target` create:
 ...          power=2,
 ...          toughness=1)
 >>> creature.fight(target)
+
 ```
 
 In this case the create is no longer alive after the fight:

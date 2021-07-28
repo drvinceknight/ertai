@@ -6,34 +6,27 @@ from .card import Card
 from dataclasses import dataclass
 
 
-@dataclass(repr=False)
+@dataclass(init=False, repr=False)
 class Creature(Card):
     """
     A base class for creatures.
+    """
 
-    Initiate this creature by passing power and toughness.
+    def __init__(self, title, cost, power, toughness, tapped=False):
+        """
+        Initiate this creature by passing power and toughness.
 
-    Parameters:
+        Parameters:
         - power : power  of this creature
         - toughness : Toughness value of this creature,
                 but this value can be modified in a fight or other condition
         - base_toughness : Toughness value of this creature,
                 use to store the base toughness of this creature.
-        - is_alive : A bool value represent wether this creature is alive.
-    """
-
-    power: int
-    toughness: int
-    is_alive: bool = True
-
-    def __post_init__(self):
         """
-        Set base_toughness to record the base toughness
-        this creature has. It can be used after a fight
-        to recover this creature's toughness to default value
-        if this creature is alive after fighting.
-        """
-        self.base_toughness = self.toughness
+        Card.__init__(self, title, cost, tapped)
+        self.power = power
+        self.toughness = toughness
+        self.base_toughness = toughness
 
     def __repr__(self):
         """
@@ -49,11 +42,11 @@ class Creature(Card):
             + str(self.toughness)
         )
 
-def is_alive():
-      """
-      This function is used to see wether this creature is alive or not.
-      """
-      return self.toughness > 0
+    def is_alive(self):
+        """
+        This function is used to see wether this creature is alive or not.
+        """
+        return self.toughness > 0
 
     def fight(self, target):
         """
@@ -66,6 +59,5 @@ def is_alive():
             - target : Another creature this one fight with
         """
 
-
         self.toughness = self.toughness - target.power
-        target.toughness == target.toughness - self.power
+        target.toughness = target.toughness - self.power
