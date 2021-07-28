@@ -49,16 +49,11 @@ class Creature(Card):
             + str(self.toughness)
         )
 
-    def check_state(self):
-        """
-        This function is used after a attack happended.
-        If the toughness of this creature drop down to 0 or less,
-        then we set it's state to False which means that this creature is died.
-        """
-        if self.toughness <= 0:
-            self.is_alive = False
-        else:
-            self.toughness = self.base_toughness
+def is_alive():
+      """
+      ... # TODO Add something here
+      """
+      return self.toughness > 0
 
     def fight(self, target):
         """
