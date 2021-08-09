@@ -294,6 +294,38 @@ warning is given.
 
 ```
 
+### How to create a ceature card
+
+Pass a `power` and `toughness` to the `Creature` class:
+
+```python
+>>> creature = ertai.Creature(title="Selfless Savior",cost=ertai.Mana("White"),
+...            power=1,
+...            toughness=1)
+>>> creature
+Selfless Savior    Cost:1 White Mana    Power:1    Toughness:1
+
+```
+
+### How to use a creature to fight 
+
+We can then use this creature to fight a `target` create:
+
+```python
+>>> target = ertai.Creature(title="Usher of the Fallen",cost=ertai.Mana("White"),
+...          power=2,
+...          toughness=1)
+>>> creature.fight(target)
+
+```
+
+In this case the create is no longer alive after the fight:
+
+```python
+>>> creature.is_alive()
+False
+
+```
 
 ### How to contribute
 
